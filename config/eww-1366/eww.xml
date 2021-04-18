@@ -180,7 +180,7 @@
     </def>
     <def name="incognito">
       <box orientation="v" space-evenly="true">
-        <button class="incognito-icon" onclick="firefox -private-window">﫸</button>
+        <button class="incognito-icon" onclick="firefox-developer-edition -private-window">﫸</button>
       </box>
     </def>
     <def name="blur_full">

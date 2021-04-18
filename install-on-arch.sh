@@ -16,28 +16,30 @@ echo "##########################################################################
 # install base-devel if not installed
 sudo pacman -S --noconfirm --needed base-devel wget
 
-# choose video driver
-echo "1) xf86-video-intel 	2) xf86-video-amdgpu 3) Skip"
-read -r -p "Choose you video card driver(default 1)(will not re-install): " vid
-
-case $vid in 
-[1])
-	DRI='xf86-video-intel'
-	;;
-
-[2])
-	DRI='xf86-video-amdgpu'
-	;;
-[3])
-	DRI=""
-	;;
-[*])
-	DRI='xf86-video-intel'
-	;;
-esac
+# refresh video driver for manjaro
+sudo mhwd -a pci nonfree 0300
 
 # install xorg if not installed
-sudo pacman -S --noconfirm --needed feh xorg xorg-xinit xorg-xinput $DRI xmonad zsh
+sudo pacman -S --noconfirm --needed feh xorg xorg-xinit xorg-xinput xmonad zsh
+
+# install gtk2
+sudo pacman -S --noconfirm --needed gtk2
+
+# install NetworkManager and set to startup on boot.
+sudo pacman -S --noconfirm --needed networkmanager nm-connection-editor 
+sudo systemctl enable NetworkManager.service
+sudo systemctl start NetworkManager.service
+
+# install ripgrep.
+sudo pacman -S --noconfirm --needed ripgrep
+
+# install and configure pulseaudio
+sudo pacman -S --noconfirm --needed alsa-utils pulseaudio pa-applet pulseaudio-alsa pulseaudio-bluetooth manjaro-pulse
+
+# install firefox-developer-edition
+sudo pacman -S --noconfirm --needed firefox-developer-edition
+
+
 
 # install fonts, window manager and terminal
 mkdir -p ~/.local/share/fonts
@@ -50,40 +52,27 @@ cp -r ./fonts/* ~/.local/share/fonts/
 fc-cache -f
 clear 
 
-# git clone $CLIENT/$WM 
-# cd $WM/ && sudo make clean install
-
-# cd ~/.srcs/
-
-# git clone $CLIENT/$EMU 
-# cd $EMU/ && sudo make clean install 
-
-# cd ~/.srcs/
-
-# git clone $CLIENT/$EXT
-# cd $EXT/ && sudo make clean install
-
-# install yay
-read -r -p "Would you like to install yay? Say no if you already have it (step necessary because well, we need some stuff) [yes/no]: " yay
+# install paru
+read -r -p "Would you like to install paru? Say no if you already have it (step necessary because well, we need some stuff) [yes/no]: " paru
 # echo "Please replace libxft with libxft-bgra in next install" 
 sleep 3
 
-case $yay in
+case $paru in
 [yY][eE][sS]|[yY])
-	git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
-	(cd ~/.srcs/yay/ && makepkg -si )
+	git clone https://aur.archlinux.org/paru.git ~/.srcs/paru
+	(cd ~/.srcs/paru/ && makepkg -si )
 
-	yay -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl dunst xmonad-contrib jq xclip maim
+	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify
 	;;
 
 [nN][oO]|[nN])
 	echo "Installing Other Stuff then"
-	yay -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl dunst xmonad-contrib jq xclip maim
+	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify
 	;;
 
 [*])
 	echo "Lets do it anyways lol" 
-	yay -S  picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl dunst xmonad-contrib jq xclip maim
+	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify
 	sleep 1
 	;;
 esac
@@ -206,3 +195,10 @@ cd ~/
 # sudo pacman --noconfirm --needed -S zsh
 #OhMyZsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#############################
+# AUR needed installs below #
+#############################
+
+# NetworkManager applet
+paru -S network-manager-applet-gtk2 betterlockscreen 

@@ -175,7 +175,7 @@ launcher_icon_theme_override = 0
 startup_notifications = 1
 launcher_tooltip = 1
 launcher_item_app = /usr/share/applications/flameshot.desktop
-launcher_item_app = /usr/share/applications/firefox.desktop
+launcher_item_app = /usr/share/applications/firefox-developer-edition.desktop
 launcher_item_app = /usr/share/applications/spotify.desktop
 launcher_item_app = /usr/share/applications/learnenough-nativefier-c4daf2.desktop
 launcher_item_app = /usr/share/applications/vim.desktop
@@ -396,7 +396,7 @@ button_max_icon_size = 0
 # Button 2
 button = new
 button_text = 
-button_lclick_command = firefox
+button_lclick_command = firefox-developer-edition
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 

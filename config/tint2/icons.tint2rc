@@ -371,7 +371,7 @@ execp_icon_h = 0
 # Button 1
 button = new
 button_text = 
-button_lclick_command = firefox https://www.reddit.com/r/unixporn/
+button_lclick_command = firefox-developer-edition https://www.reddit.com/r/unixporn/
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 
@@ -387,7 +387,7 @@ button_max_icon_size = 0
 # Button 2
 button = new
 button_text = 
-button_lclick_command = firefox firefox https://www.reddit.com/r/memes/
+button_lclick_command = firefox-developer-edition https://www.reddit.com/r/memes/
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 
@@ -403,7 +403,7 @@ button_max_icon_size = 0
 # Button 3
 button = new
 button_text = 
-button_lclick_command = firefox https://github.com/Axarva
+button_lclick_command = firefox-developer-edition https://github.com/Axarva
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 
@@ -419,7 +419,7 @@ button_max_icon_size = 0
 # Button 4
 button = new
 button_text = 
-button_lclick_command = firefox https://mail.google.com/
+button_lclick_command = firefox-developer-edition https://mail.google.com/
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 
