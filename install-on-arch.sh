@@ -33,6 +33,9 @@ sudo systemctl start NetworkManager.service
 # install ripgrep.
 sudo pacman -S --noconfirm --needed ripgrep
 
+# install neovim.
+sudo pacman -S --noconfirm --needed neovim
+
 # install and configure pulseaudio
 sudo pacman -S --noconfirm --needed alsa-utils pulseaudio pa-applet pulseaudio-alsa pulseaudio-bluetooth manjaro-pulse
 
@@ -62,17 +65,17 @@ case $paru in
 	git clone https://aur.archlinux.org/paru.git ~/.srcs/paru
 	(cd ~/.srcs/paru/ && makepkg -si )
 
-	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify
-	;;
+	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
+	;; 
 
 [nN][oO]|[nN])
 	echo "Installing Other Stuff then"
-	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify
+	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
 	;;
 
 [*])
 	echo "Lets do it anyways lol" 
-	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify
+	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
 	sleep 1
 	;;
 esac
@@ -195,10 +198,3 @@ cd ~/
 # sudo pacman --noconfirm --needed -S zsh
 #OhMyZsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-#############################
-# AUR needed installs below #
-#############################
-
-# NetworkManager applet
-paru -S network-manager-applet-gtk2 betterlockscreen 
