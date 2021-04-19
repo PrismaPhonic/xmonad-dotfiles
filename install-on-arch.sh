@@ -42,8 +42,6 @@ sudo pacman -S --noconfirm --needed alsa-utils pulseaudio pa-applet pulseaudio-a
 # install firefox-developer-edition
 sudo pacman -S --noconfirm --needed firefox-developer-edition
 
-
-
 # install fonts, window manager and terminal
 mkdir -p ~/.local/share/fonts
 mkdir -p ~/.srcs
@@ -198,3 +196,10 @@ cd ~/
 # sudo pacman --noconfirm --needed -S zsh
 #OhMyZsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# setup powerlevel10k for term
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+export ZSH_THEME="powerlevel10k/powerlevel10k"
+
+p10k configure
