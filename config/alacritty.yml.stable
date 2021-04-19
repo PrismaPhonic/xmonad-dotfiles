@@ -5,8 +5,8 @@ env:
 
 window:
   padding:
-    x: 25
-    y: 25
+    x: 15
+    y: 15
 
     dynamic_padding:  true
     decoration: none
@@ -82,8 +82,4 @@ key_bindings:
 
   - { key: Equals, mods: Control, action: IncreaseFontSize }
 
-  - { key: Add, mods: Control, action: IncreaseFontSize }
-
-  - { key: Subtract, mods: Control, action: DecreaseFontSize }
-   
   - { key: Minus, mods: Control, action: DecreaseFontSize }

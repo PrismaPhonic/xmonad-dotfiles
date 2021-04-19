@@ -18,7 +18,7 @@ import Control.Monad ( join, when )
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
     ( avoidStruts, docks, manageDocks, Direction2D(D, L, R, U) )
-import XMonad.Hooks.ManageHelpers ( doFullFloat, isFullscreen )
+import XMonad.Hooks.ManageHelpers ( doFullFloat, isFullscreen, doRectFloat )
 import XMonad.Layout.Spacing ( spacingRaw, Border(Border) )
 import XMonad.Layout.Gaps
     ( Direction2D(D, L, R, U),
@@ -29,10 +29,12 @@ import XMonad.Layout.Gaps
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import Data.Maybe (maybeToList)
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
---
+import Data.Ratio
+
+
 myTerminal      = "alacritty"
+-- Preferred browser
+myBrowser       = "firefox-developer-edition"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -122,17 +124,19 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,                 xK_Print), spawn "~/bin/maimsave")
 
     -- My Stuff
-    , ((modm,               xK_b     ), spawn "exec ~/bin/bartoggle")
+    , ((modm,               xK_b     ), sequence_ [spawn "exec ~/bin/bartoggle", sendMessage $ ToggleGaps])
     -- , ((modm,               xK_z     ), spawn "exec ~/bin/inhibit_activate")
     -- , ((modm .|. shiftMask, xK_z     ), spawn "exec ~/bin/inhibit_deactivate")
     , ((modm .|. shiftMask, xK_a     ), spawn "exec ~/bin/clipboardy")
 
     -- close focused window
     , ((modm,               xK_x     ), kill)
+    -- launch browser
+    , ((modm .|. shiftMask, xK_b     ), spawn myBrowser)
 
     -- GAPS!!!
     , ((modm .|. controlMask, xK_g), sendMessage $ ToggleGaps)               -- toggle all gaps
-    , ((modm .|. shiftMask, xK_g), sendMessage $ setGaps [(L,30), (R,30), (U,40), (D,60)]) -- reset the GapSpec
+    , ((modm .|. shiftMask, xK_g), sendMessage $ setGaps [(L,5), (R,5), (U,55), (D,5)]) -- reset the GapSpec
     
     , ((modm .|. controlMask, xK_t), sendMessage $ IncGap 10 L)              -- increment the left-hand gap
     , ((modm .|. shiftMask, xK_t     ), sendMessage $ DecGap 10 L)           -- decrement the left-hand gap
@@ -207,7 +211,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
     ++
-
     --
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
@@ -241,8 +244,6 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
                                        >> windows W.shiftMaster))
-
-    -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
 
 ------------------------------------------------------------------------
@@ -291,7 +292,7 @@ myManageHook = fullscreenManageHook <+> manageDocks <+> composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
     , isFullscreen --> doFullFloat
-                                 ]
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -326,7 +327,7 @@ myStartupHook = do
   spawnOnce "exec ~/bin/eww daemon"
   spawn "xsetroot -cursor_name left_ptr"
   spawn "exec ~/bin/lock.sh"
-  spawnOnce "feh --bg-scale ~/wallpapers/yosemite-lowpoly.jpg"
+  spawnOnce "feh --bg-scale ~/wallpapers/glasstop.png"
   spawnOnce "picom -f"
   spawnOnce "greenclip daemon"
   spawnOnce "dunst"
@@ -361,7 +362,7 @@ defaults = def {
 
       -- hooks, layouts
         manageHook = myManageHook, 
-        layoutHook = gaps [(L,30), (R,30), (U,40), (D,60)] $ spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True $ smartBorders $ myLayout,
+        layoutHook = gaps [(L,5), (R,5), (U,55), (D,5)] $ spacingRaw True (Border 2 2 2 2) True (Border 2 2 2 2) True $ smartBorders $ myLayout,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
         startupHook        = myStartupHook >> addEWMHFullscreen
