@@ -195,6 +195,9 @@ sudo systemctl enable lightdm.service --force
 sudo pacman -S --needed --noconfirm lightdm-webkit2-greeter
 paru -S --needed --noconfirm lightdm-webkit2-theme-glorious
 
+# Install mugshot so we can update user picture in greeter
+sudo pacman -S --needed --noconfirm mugshot
+
 cd ~/
 
 # install zsh and make it default
