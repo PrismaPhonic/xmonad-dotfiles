@@ -189,6 +189,11 @@ echo "These instructions have been saved to ~/Note.txt. Make sure to go through 
 sleep 5
 xmonad --recompile
 
+# Install LightDM and a greeter
+sudo pacman -S --needed --noconfirm lightdm
+sudo systemctl enable lightdm.service --force
+sudo pacman -S --needed --noconfirm lightdm-webkit2-greeter
+paru -S --needed --noconfirm lightdm-webkit2-theme-glorious
 
 cd ~/
 
