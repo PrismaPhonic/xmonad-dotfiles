@@ -42,6 +42,26 @@ sudo pacman -S --noconfirm --needed alsa-utils pulseaudio pa-applet pulseaudio-a
 # install firefox-developer-edition
 sudo pacman -S --noconfirm --needed firefox-developer-edition
 
+# install rust so we can install eww from git globally.
+# Un-install previous Rust that may have been installed using manjaro community repo
+sudo pacman -R rust
+
+# Install rust
+curl https://sh.rustup.rs -sSf | sh
+source $HOME/.cargo/env
+
+# Install nightly rust
+rustup install nightly
+
+# Install RLS
+rustup component add rls rust-analysis rust-src
+
+# Install ripgrep
+cargo install ripgrep
+
+# Install newest eww
+cargo +nightly install --git https://github.com/elkowar/eww
+
 # install fonts, window manager and terminal
 mkdir -p ~/.local/share/fonts
 mkdir -p ~/.srcs

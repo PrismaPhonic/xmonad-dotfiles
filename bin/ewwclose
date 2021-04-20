@@ -1,2 +1,2 @@
 #!/bin/bash
-exec ~/bin/eww close-all
+exec eww close-all

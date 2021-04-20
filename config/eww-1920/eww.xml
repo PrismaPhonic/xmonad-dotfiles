@@ -194,7 +194,7 @@
           <button class="lock-side" onclick="~/.config/eww/scripts/lockscreen.sh"></button>
           <button class="suspend-side" onclick="~/.config/eww/scripts/suspend.sh"></button>
           <button class="logout-side" onclick="~/.config/eww/scripts/logout.sh"></button>
-          <button class="lock-side" onclick="exec ~/bin/eww close powermenu"></button>
+          <button class="lock-side" onclick="exec eww close powermenu"></button>
         </box>
     </def> -->
 
@@ -365,7 +365,7 @@
       </widget>
     </window>
      <window name="weather">
-      <geometry x="740px" y="220px" width="410px" height="400px"/>
+      <geometry x="740px" y="220px" width="400px" height="400px"/>
       <widget>
         <weather/>
       </widget>

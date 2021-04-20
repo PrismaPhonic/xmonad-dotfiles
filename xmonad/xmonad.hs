@@ -101,11 +101,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch rofi and dashboard
     , ((modm,               xK_o     ), spawn "~/bin/launcher.sh")
     , ((modm,               xK_p     ), spawn "~/bin/centerlaunch")
-    , ((modm .|. shiftMask, xK_p     ), spawn "exec ~/bin/ewwclose")
+    , ((modm .|. shiftMask, xK_p     ), spawn "exec ewwclose")
 
     -- launch eww sidebar
     , ((modm,               xK_s     ), spawn "~/bin/sidebarlaunch")
-    , ((modm .|. shiftMask, xK_s     ), spawn "exec ~/bin/ewwclose")
+    , ((modm .|. shiftMask, xK_s     ), spawn "exec ewwclose")
 
     -- Audio keys
     , ((0,                    xF86XK_AudioPlay), spawn "playerctl play-pause")
@@ -324,7 +324,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "exec ~/bin/bartoggle"
-  spawnOnce "exec ~/bin/eww daemon"
+  spawnOnce "exec eww daemon"
   spawn "xsetroot -cursor_name left_ptr"
   spawn "exec ~/bin/lock.sh"
   spawnOnce "feh --bg-scale ~/wallpapers/glasstop.png"
