@@ -62,6 +62,15 @@ cargo install ripgrep
 # Install newest eww
 cargo +nightly install --git https://github.com/elkowar/eww
 
+# Install file manager
+sudo pacman -S --needed --noconfirm pcmanfm
+
+# Install various gtk themes
+paru -S --needed --noconfirm gtk2 gtk3 lxappearance-gtk3 adapta-maia-theme gtk-theme-breathe papirus-maia-icon-theme xcursor-breeze arc-gtk-theme arc-darkest-theme-git
+# TODO: Finish this section
+# Install ability to change qt based application themes
+paru -S --needed --noconfirm kvantum-qt5
+
 # install fonts, window manager and terminal
 mkdir -p ~/.local/share/fonts
 mkdir -p ~/.srcs
