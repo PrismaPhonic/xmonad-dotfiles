@@ -22,8 +22,11 @@ sudo mhwd -a pci nonfree 0300
 # install xorg if not installed
 sudo pacman -S --noconfirm --needed feh xorg xorg-xinit xorg-xinput xmonad zsh
 
-# install gtk2
-sudo pacman -S --noconfirm --needed gtk2
+# install gtk3
+sudo pacman -S --noconfirm --needed gtk3
+
+# install file manager
+sudo pacman -S --noconfirm --needed pcmanfm-gtk3 gvfs
 
 # install NetworkManager and set to startup on boot.
 sudo pacman -S --noconfirm --needed networkmanager nm-connection-editor 
@@ -62,14 +65,11 @@ cargo install ripgrep
 # Install newest eww
 cargo +nightly install --git https://github.com/elkowar/eww
 
-# Install file manager
-sudo pacman -S --needed --noconfirm pcmanfm
-
-# Install various gtk themes
-paru -S --needed --noconfirm gtk2 gtk3 lxappearance-gtk3 adapta-maia-theme gtk-theme-breathe papirus-maia-icon-theme xcursor-breeze arc-gtk-theme arc-darkest-theme-git
-# TODO: Finish this section
-# Install ability to change qt based application themes
-paru -S --needed --noconfirm kvantum-qt5
+## TODO: This might be clobbering workspaces bar. Fix this
+## Install various themes
+# paru -S --needed --noconfirm gtk3 lxappearance-gtk3 adapta-maia-theme gtk-theme-breathe papirus-maia-icon-theme xcursor-breeze arc-gtk-theme arc-darkest-theme-git
+## Install ability to change qt based application themes
+# paru -S --needed --noconfirm kvantum-qt5
 
 # install fonts, window manager and terminal
 mkdir -p ~/.local/share/fonts

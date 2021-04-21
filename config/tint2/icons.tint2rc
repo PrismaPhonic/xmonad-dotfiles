@@ -73,8 +73,8 @@ border_color_pressed = #000000 100
 #-------------------------------------
 # Panel
 panel_items = P:P:P:P:
-panel_size = 12% 28
-panel_margin = 226 8
+panel_size = 12% 40
+panel_margin = 350 8
 panel_padding = 12 6 10
 panel_background_id = 5
 wm_menu = 1

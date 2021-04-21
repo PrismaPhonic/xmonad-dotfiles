@@ -73,9 +73,9 @@ border_color_pressed = #000000 100
 #-------------------------------------
 # Panel
 panel_items = E:E:E:EEB
-panel_size = 8% 28
-panel_margin = 115 8
-panel_padding = 9 2 3
+panel_size = 5% 40
+panel_margin = 165 8
+panel_padding = 12 2 3
 panel_background_id = 5
 wm_menu = 1
 panel_dock = 1
