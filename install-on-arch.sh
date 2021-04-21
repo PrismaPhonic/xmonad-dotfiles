@@ -65,11 +65,10 @@ cargo install ripgrep
 # Install newest eww
 cargo +nightly install --git https://github.com/elkowar/eww
 
-## TODO: This might be clobbering workspaces bar. Fix this
 ## Install various themes
-# paru -S --needed --noconfirm gtk3 lxappearance-gtk3 adapta-maia-theme gtk-theme-breathe papirus-maia-icon-theme xcursor-breeze arc-gtk-theme arc-darkest-theme-git
+paru -S --needed --noconfirm gtk3 lxappearance-gtk3 adapta-maia-theme gtk-theme-breathe papirus-maia-icon-theme xcursor-breeze arc-gtk-theme arc-darkest-theme-git
 ## Install ability to change qt based application themes
-# paru -S --needed --noconfirm kvantum-qt5
+paru -S --needed --noconfirm kvantum-qt5
 
 # install fonts, window manager and terminal
 mkdir -p ~/.local/share/fonts
