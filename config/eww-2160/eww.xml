@@ -133,8 +133,8 @@
           <box class="pfp"></box>
         </box>
         <box orientation="v" space-evenly="false"> 
-          <box class="pfptxt" valign="center">*Insert-Name-Here*</box>
-          <box class="subpfptxt" halign="center">*Some-cheeky-line*</box>
+          <box class="pfptxt" valign="center">Peter</box>
+          <box class="subpfptxt" halign="center">A Decently Nice Guy</box>
         </box>
       </box>
     </def>
@@ -267,37 +267,37 @@
     <!-- Sidebar stuff -->
 
     <window name="smol_calendar">
-      <geometry x="10px" y="45px" width="80px" height="80px"/>
+      <geometry x="10px" y="60px" width="80px" height="80px"/>
       <widget>
         <smol_calendar/>
       </widget>
     </window>
     <window name="weather_side">
-      <geometry x="95px" y="45px" width="215px" height="80px"/>
+      <geometry x="95px" y="60px" width="215px" height="80px"/>
       <widget>
         <weather_side/>
       </widget>
     </window>
     <window name="player_side">
-      <geometry x="10px" y="270px" width="300px" height="110px"/>
+      <geometry x="10px" y="285px" width="300px" height="110px"/>
       <widget>
         <player_side/>
       </widget>
     </window>
     <window name="time_side">
-      <geometry x="10px" y="130px" width="300px" height="135px"/>
+      <geometry x="10px" y="145px" width="300px" height="135px"/>
       <widget>
         <time_side/>
       </widget>
     </window>
     <window name="sliders_side">
-      <geometry x="10px" y="385px" width="300px" height="205px"/>
+      <geometry x="10px" y="400px" width="300px" height="205px"/>
       <widget>
         <sliders_side/>
       </widget>
     </window>
     <window name="sys_side">
-      <geometry x="10px" y="595px" width="300px" height="153px"/>
+      <geometry x="10px" y="610px" width="300px" height="153px"/>
       <widget>
         <sys_side/>
       </widget>

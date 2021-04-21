@@ -120,7 +120,7 @@ mkdir -p ~/.config/
         mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
     fi
     sleep 5
-    echo "1)1366 x 768       2)1920 x 1080"
+    echo "1)1366 x 768       2)1920 x 1080      3) 2160 x 1440"
     read -r -p "Choose your screen resolution: " res
     case $res in 
     [1])
@@ -129,8 +129,11 @@ mkdir -p ~/.config/
     [2])
 	EWW_DIR='config/eww-1920'
 	;;
+    [3])
+	EWW_DIR='config/eww-2160'
+	;;
     [*])
-	EWW_DIR='config/eww-1366'
+	EWW_DIR='config/eww-2160'
 	;;
     esac
     if [ -d ~/.config/eww ]; then
