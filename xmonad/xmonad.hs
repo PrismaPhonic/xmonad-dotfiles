@@ -10,7 +10,7 @@ import XMonad
 import XMonad.Layout.Fullscreen
     ( fullscreenEventHook, fullscreenManageHook, fullscreenSupport, fullscreenFull )
 import Data.Monoid ()
-import System.Exit ()
+import System.Exit
 import XMonad.Util.SpawnOnce ( spawnOnce )
 import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioLowerVolume, xF86XK_AudioRaiseVolume, xF86XK_AudioMute, xF86XK_MonBrightnessDown, xF86XK_MonBrightnessUp, xF86XK_AudioPlay, xF86XK_AudioPrev, xF86XK_AudioNext)
 import XMonad.Hooks.EwmhDesktops ( ewmh )
@@ -101,11 +101,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch rofi and dashboard
     , ((modm,               xK_o     ), spawn "~/bin/launcher.sh")
     , ((modm,               xK_p     ), spawn "~/bin/centerlaunch")
-    , ((modm .|. shiftMask, xK_p     ), spawn "exec ewwclose")
+    , ((modm .|. shiftMask, xK_p     ), spawn "exec ~/bin/ewwclose")
 
     -- launch eww sidebar
     , ((modm,               xK_s     ), spawn "~/bin/sidebarlaunch")
-    , ((modm .|. shiftMask, xK_s     ), spawn "exec ewwclose")
+    , ((modm .|. shiftMask, xK_s     ), spawn "exec ~/bin/ewwclose")
 
     -- Audio keys
     , ((0,                    xF86XK_AudioPlay), spawn "playerctl play-pause")
@@ -202,10 +202,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
+    , ((modm .|. shiftMask .|. controlMask, xK_q     ), io (exitWith ExitSuccess))
     , ((modm .|. shiftMask, xK_q     ), spawn "~/bin/powermenu.sh")
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- Pull up file manager
+    , ((modm .|. controlMask, xK_e   ), spawn "/bin/pcmanfm")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
