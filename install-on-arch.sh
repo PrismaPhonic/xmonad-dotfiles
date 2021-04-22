@@ -45,10 +45,6 @@ sudo pacman -S --noconfirm --needed alsa-utils pulseaudio pa-applet pulseaudio-a
 # install firefox-developer-edition
 sudo pacman -S --noconfirm --needed firefox-developer-edition
 
-# install rust so we can install eww from git globally.
-# Un-install previous Rust that may have been installed using manjaro community repo
-sudo pacman -R rust
-
 # Install rust
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
@@ -65,10 +61,8 @@ cargo install ripgrep
 # Install newest eww
 cargo +nightly install --git https://github.com/elkowar/eww
 
-## Install various themes
-paru -S --needed --noconfirm gtk3 lxappearance-gtk3 adapta-maia-theme gtk-theme-breathe papirus-maia-icon-theme xcursor-breeze arc-gtk-theme arc-darkest-theme-git
-## Install ability to change qt based application themes
-paru -S --needed --noconfirm kvantum-qt5
+# fix spotify gpg key issue
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 
 # install fonts, window manager and terminal
 mkdir -p ~/.local/share/fonts
@@ -88,23 +82,28 @@ sleep 3
 
 case $paru in
 [yY][eE][sS]|[yY])
-	git clone https://aur.archlinux.org/paru.git ~/.srcs/paru
-	(cd ~/.srcs/paru/ && makepkg -si )
+	cargo install paru
 
-	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
+	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
 	;; 
 
 [nN][oO]|[nN])
 	echo "Installing Other Stuff then"
-	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
+	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
 	;;
 
 [*])
 	echo "Lets do it anyways lol" 
-	paru -S picom-jonaburg-git acpi rofi-git candy-icons wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
+	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
 	sleep 1
 	;;
 esac
+
+## Install various themes
+paru -S --needed --noconfirm gtk3 lxappearance-gtk3 adapta-maia-theme breath-gtk-theme papirus-maia-icon-theme xcursor-breeze arc-gtk-theme arc-darkest-theme-git
+## Install ability to change qt based application themes
+paru -S --needed --noconfirm kvantum-manjaro
+
 
 #install custom picom config file 
 mkdir -p ~/.config/
