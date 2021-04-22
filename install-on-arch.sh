@@ -84,17 +84,18 @@ case $paru in
 [yY][eE][sS]|[yY])
 	cargo install paru
 
-	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
+	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify spicetify-cli spicetify-themes-git betterlockscreen
 	;; 
 
 [nN][oO]|[nN])
 	echo "Installing Other Stuff then"
-	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
-	;;
+	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify spicetify-cli spicetify-themes-git betterlockscreen
+	;; 
+
 
 [*])
 	echo "Lets do it anyways lol" 
-	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify betterlockscreen
+	paru -S --noconfirm --needed picom-jonaburg-git acpi rofi-git candy-icons-git wmctrl alacritty playerctl brightnessctl dunst xmonad-contrib jq xclip maim rofi-greenclip spotify spicetify-cli spicetify-themes-git betterlockscreen
 	sleep 1
 	;;
 esac
